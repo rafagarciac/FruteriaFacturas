@@ -12,9 +12,13 @@ namespace FruteriaFacturas
 {
     public partial class Form1 : Form
     {
+
+        Conexion conexion;
+
         public Form1()
         {
             InitializeComponent();
+            conexion = new Conexion();
         }
 
     // CREACION DEL CLIENTE 
@@ -43,6 +47,12 @@ namespace FruteriaFacturas
                 }
             }
             return repetido;
+        }
+
+    //TIMER PARA EL RELOJ
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.tslHora.Text = DateTime.Now.ToString();
         }
 
 

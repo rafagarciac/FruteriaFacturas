@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.creacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,14 +43,13 @@
             this.clientesToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.albaranToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.facturaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultaDatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.albaranesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.informesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pbfondoMDI = new System.Windows.Forms.PictureBox();
+            this.tsHoraActual = new System.Windows.Forms.ToolStrip();
+            this.tslHora = new System.Windows.Forms.ToolStripLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbfondoMDI)).BeginInit();
+            this.tsHoraActual.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -57,12 +57,10 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.creacionToolStripMenuItem,
             this.modificacionToolStripMenuItem,
-            this.borradoToolStripMenuItem,
-            this.consultaDatosToolStripMenuItem,
-            this.informesToolStripMenuItem});
+            this.borradoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(661, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(722, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -73,26 +71,26 @@
             this.facturaToolStripMenuItem,
             this.albaranToolStripMenuItem});
             this.creacionToolStripMenuItem.Name = "creacionToolStripMenuItem";
-            this.creacionToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.creacionToolStripMenuItem.Text = "Creacion";
+            this.creacionToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.creacionToolStripMenuItem.Text = "Clientes";
             // 
             // clientesToolStripMenuItem1
             // 
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.clientesToolStripMenuItem1.Text = "Clientes";
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(115, 22);
+            this.clientesToolStripMenuItem1.Text = "Alta";
             this.clientesToolStripMenuItem1.Click += new System.EventHandler(this.clientesToolStripMenuItem1_Click);
             // 
             // facturaToolStripMenuItem
             // 
             this.facturaToolStripMenuItem.Name = "facturaToolStripMenuItem";
-            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.facturaToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.facturaToolStripMenuItem.Text = "Factura";
             // 
             // albaranToolStripMenuItem
             // 
             this.albaranToolStripMenuItem.Name = "albaranToolStripMenuItem";
-            this.albaranToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.albaranToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.albaranToolStripMenuItem.Text = "Albaran";
             // 
             // modificacionToolStripMenuItem
@@ -102,8 +100,8 @@
             this.albaranToolStripMenuItem1,
             this.facturaToolStripMenuItem1});
             this.modificacionToolStripMenuItem.Name = "modificacionToolStripMenuItem";
-            this.modificacionToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.modificacionToolStripMenuItem.Text = "Modificacion";
+            this.modificacionToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.modificacionToolStripMenuItem.Text = "Albaranes";
             // 
             // clientesToolStripMenuItem2
             // 
@@ -130,8 +128,8 @@
             this.albaranToolStripMenuItem2,
             this.facturaToolStripMenuItem2});
             this.borradoToolStripMenuItem.Name = "borradoToolStripMenuItem";
-            this.borradoToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.borradoToolStripMenuItem.Text = "Borrado";
+            this.borradoToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.borradoToolStripMenuItem.Text = "Facturas";
             // 
             // clientesToolStripMenuItem3
             // 
@@ -151,55 +149,45 @@
             this.facturaToolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
             this.facturaToolStripMenuItem2.Text = "Factura";
             // 
-            // consultaDatosToolStripMenuItem
-            // 
-            this.consultaDatosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clientesToolStripMenuItem,
-            this.albaranesToolStripMenuItem,
-            this.facturasToolStripMenuItem});
-            this.consultaDatosToolStripMenuItem.Name = "consultaDatosToolStripMenuItem";
-            this.consultaDatosToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.consultaDatosToolStripMenuItem.Text = "Consulta Datos";
-            // 
-            // clientesToolStripMenuItem
-            // 
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            // 
-            // albaranesToolStripMenuItem
-            // 
-            this.albaranesToolStripMenuItem.Name = "albaranesToolStripMenuItem";
-            this.albaranesToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.albaranesToolStripMenuItem.Text = "Albaranes";
-            // 
-            // facturasToolStripMenuItem
-            // 
-            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
-            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.facturasToolStripMenuItem.Text = "Facturas";
-            // 
-            // informesToolStripMenuItem
-            // 
-            this.informesToolStripMenuItem.Name = "informesToolStripMenuItem";
-            this.informesToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.informesToolStripMenuItem.Text = "Informes";
-            // 
             // pbfondoMDI
             // 
             this.pbfondoMDI.Image = ((System.Drawing.Image)(resources.GetObject("pbfondoMDI.Image")));
             this.pbfondoMDI.Location = new System.Drawing.Point(0, 27);
             this.pbfondoMDI.Name = "pbfondoMDI";
-            this.pbfondoMDI.Size = new System.Drawing.Size(661, 373);
+            this.pbfondoMDI.Size = new System.Drawing.Size(722, 416);
             this.pbfondoMDI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbfondoMDI.TabIndex = 3;
             this.pbfondoMDI.TabStop = false;
+            // 
+            // tsHoraActual
+            // 
+            this.tsHoraActual.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tsHoraActual.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslHora});
+            this.tsHoraActual.Location = new System.Drawing.Point(0, 446);
+            this.tsHoraActual.Name = "tsHoraActual";
+            this.tsHoraActual.Size = new System.Drawing.Size(722, 25);
+            this.tsHoraActual.TabIndex = 5;
+            this.tsHoraActual.Text = "toolStrip1";
+            // 
+            // tslHora
+            // 
+            this.tslHora.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tslHora.Name = "tslHora";
+            this.tslHora.Size = new System.Drawing.Size(0, 22);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 403);
+            this.ClientSize = new System.Drawing.Size(722, 471);
+            this.Controls.Add(this.tsHoraActual);
             this.Controls.Add(this.pbfondoMDI);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
@@ -209,6 +197,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbfondoMDI)).EndInit();
+            this.tsHoraActual.ResumeLayout(false);
+            this.tsHoraActual.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,8 +210,6 @@
         private System.Windows.Forms.ToolStripMenuItem creacionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificacionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem borradoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultaDatosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem informesToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbfondoMDI;
         private System.Windows.Forms.ToolStripMenuItem albaranToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
@@ -232,9 +220,9 @@
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem albaranesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem;
+        private System.Windows.Forms.ToolStrip tsHoraActual;
+        private System.Windows.Forms.ToolStripLabel tslHora;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
