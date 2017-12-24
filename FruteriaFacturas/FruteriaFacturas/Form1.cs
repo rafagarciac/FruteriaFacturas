@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,25 +15,47 @@ namespace FruteriaFacturas
     {
 
         Conexion conexion;
+        ArrayList clientesArray;
 
+    // CONSTRUCTOR
         public Form1()
         {
             InitializeComponent();
+            
             conexion = new Conexion();
+
+        //CARGO CLIENTES 
+            cargarClientes();
+            // MessageBox.Show(this.clientesArray.Count.ToString());
         }
 
     // CREACION DEL CLIENTE 
         private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            CreacionCliente formCLiente = new CreacionCliente();
-            if (!formRepetido(formCLiente))
+            CreacionCliente formCliente = new CreacionCliente(clientesArray);
+            if (!formRepetido(formCliente))
             {
                 this.pbfondoMDI.Visible = false;
-                formCLiente.MdiParent = this;
-                formCLiente.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-                formCLiente.Show();
+                formCliente.MdiParent = this;
+                formCliente.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+                formCliente.Show();
 
             }
+        }
+
+    // MODIFICACION Y CONSULTA CLIENTE 
+        private void facturaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultaCliente formConsultaCliente = new ConsultaCliente(clientesArray);
+            if (!formRepetido(formConsultaCliente))
+            {
+                this.pbfondoMDI.Visible = false;
+                formConsultaCliente.MdiParent = this;
+                formConsultaCliente.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+                formConsultaCliente.Show();
+            }
+
+            
         }
 
     //METODO DE VERIFICACION DE FORMULARIOS REPETIDOS
@@ -54,6 +77,15 @@ namespace FruteriaFacturas
         {
             this.tslHora.Text = DateTime.Now.ToString();
         }
+
+    //METODO PARA CARGAR CLIENTES
+        public void cargarClientes()
+        {
+            clientesArray = conexion.cargarClientes();
+        }
+
+
+        
 
 
     }

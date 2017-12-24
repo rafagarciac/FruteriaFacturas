@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.Sql;
+using System.Collections;
 
 namespace FruteriaFacturas
 {
@@ -36,10 +37,9 @@ namespace FruteriaFacturas
             }
         }
 
-        public String insertarCliente(String dni_cif, String nombre, String domicilio, String poblacion)
+    //METODO INSERTAR CLIENTE
+        public void insertarCliente(String dni_cif, String nombre, String domicilio, String poblacion)
         {
-
-            String salida = "Se ha Insertado Correctamente";
 
             try
             {
@@ -48,12 +48,28 @@ namespace FruteriaFacturas
             }
             catch (Exception e)
             {
-                salida = "Error de Insercion: " + e.ToString();
-                // MessageBox.Show("No se puede insertar cliente " + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al insertar el cliente" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
-            return salida;
+    // CARGO LOS CLIENTES
+        public ArrayList cargarClientes()
+        {
+            ArrayList clientes = new ArrayList();
 
+            cmd = new SqlCommand("SELECT * FROM Clientes", conn);
+            dr = cmd.ExecuteReader();
+
+        //SI TIENE FILAS LEELO
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    Cliente cl = new Cliente(dr.GetString(0), dr.GetString(1), dr.GetString(2), dr.GetString(3));
+                    clientes.Add(cl);
+                }
+            }
+            return clientes;
         }
 
 

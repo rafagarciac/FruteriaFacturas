@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,11 +15,15 @@ namespace FruteriaFacturas
     {
 
         Conexion conexion;
+        ArrayList clientesArray;
 
-        public CreacionCliente()
+        public CreacionCliente(ArrayList clientesArray)
         {
             InitializeComponent();
             conexion = new Conexion();
+
+        // VARIABLE DE TIPO REFERENCIADO (ARRAYLIST DE CLIENTES)
+            this.clientesArray = clientesArray;
             
          // PONGO EL DNI POR DEFECTO
             cbDNI.SelectedIndex = 0;
@@ -45,13 +50,20 @@ namespace FruteriaFacturas
         private void btnAltaCliente_Click(object sender, EventArgs e)
         {
             String dni_cif = "";
-            if(this.txtCIF.Equals(""))
+            if(!this.txtCIF.Text.Equals(""))
                 dni_cif = this.txtCIF.Text;
-            else if(this.mtxtDNI != null)
+            
+            if(!this.mtxtDNI.Text.Equals("        -"))
                 dni_cif = this.mtxtDNI.Text;
 
-            if (!textBoxVacios())
+
+            if (!textBoxVacios() && !dni_cif.Equals(""))
+            {
+            //INSERTO EN BBDD Y EN ARRAYLIST
                 conexion.insertarCliente(dni_cif, this.txtNombre.Text, this.txtDomicilio.Text, this.txtPoblacion.Text);
+                clientesArray.Add(new Cliente(dni_cif, this.txtNombre.Text, this.txtDomicilio.Text, this.txtPoblacion.Text));
+                MessageBox.Show("Cliente Insertado Correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             else
                 MessageBox.Show("Rellena todos los campos!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -62,7 +74,7 @@ namespace FruteriaFacturas
             bool vacio = false;
             foreach (Control c in this.Controls)
             {
-                if (c.Text.Equals(""))
+                if (c is TextBox && c.Text.Equals("") && c.Name != "txtCIF")
                     vacio = true;
             }
 
