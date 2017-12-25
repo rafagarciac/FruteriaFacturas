@@ -83,6 +83,7 @@ namespace FruteriaFacturas
                    //INSERTO EN BBDD Y EN ARRAYLIST
                     conexion.insertarCliente(dni_cif, this.txtNombre.Text, this.txtDomicilio.Text, this.txtPoblacion.Text);
                     clientesArray.Add(new Cliente(dni_cif, this.txtNombre.Text, this.txtDomicilio.Text, this.txtPoblacion.Text));
+                    conexion.listarClientesGridView(this.dgvListadoClientes);
                     MessageBox.Show("Cliente Insertado Correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }

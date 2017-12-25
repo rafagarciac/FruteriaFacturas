@@ -99,20 +99,20 @@
             // clientesToolStripMenuItem2
             // 
             this.clientesToolStripMenuItem2.Name = "clientesToolStripMenuItem2";
-            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
-            this.clientesToolStripMenuItem2.Text = "Clientes";
+            this.clientesToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem2.Text = "Nuevo Albaran";
             // 
             // albaranToolStripMenuItem1
             // 
             this.albaranToolStripMenuItem1.Name = "albaranToolStripMenuItem1";
-            this.albaranToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
-            this.albaranToolStripMenuItem1.Text = "Albaran";
+            this.albaranToolStripMenuItem1.Size = new System.Drawing.Size(169, 22);
+            this.albaranToolStripMenuItem1.Text = "Modificar Albaran";
             // 
             // facturaToolStripMenuItem1
             // 
             this.facturaToolStripMenuItem1.Name = "facturaToolStripMenuItem1";
-            this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
-            this.facturaToolStripMenuItem1.Text = "Factura";
+            this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.facturaToolStripMenuItem1.Text = "Consultar Albaranes";
             // 
             // borradoToolStripMenuItem
             // 

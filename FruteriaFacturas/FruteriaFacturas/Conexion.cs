@@ -98,9 +98,53 @@ namespace FruteriaFacturas
                     clientes.Add(cl);
                 }
             }
+            dr.Close();
             return clientes;
         }
 
+    // CARGO LOS ALBARANES
+        public ArrayList cargarAlbaranes()
+        {
+            ArrayList albaranes = new ArrayList();
+
+            cmd = new SqlCommand("SELECT * FROM Albaranes", conn);
+            dr = cmd.ExecuteReader();
+
+            //SI TIENE FILAS LEELO
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    Albaran albaran = new Albaran(dr.GetInt32(0), dr.GetDateTime(1), dr.GetInt32(2), dr.GetString(3), dr.GetDouble(4), dr.GetDouble(5));
+                    albaranes.Add(albaran);
+                }
+            }
+            dr.Close();
+            return albaranes;
+        }
+
+        // CARGO LAS FACTURAS
+        public ArrayList cargarFacturas()
+        {
+            ArrayList facturas = new ArrayList();
+
+            cmd = new SqlCommand("SELECT * FROM Facturas", conn);
+            dr = cmd.ExecuteReader();
+
+            //SI TIENE FILAS LEELO
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    Factura factura = new Factura(dr.GetInt32(0), dr.GetDateTime(1), dr.GetDouble(2), dr.GetDouble(3), dr.GetString(4));
+                    facturas.Add(factura);
+                }
+            }
+            dr.Close();
+            return facturas;
+        }
+
+    //LISTO LOS CLIENTES EN EL GRIDVIEW ALTACLIENTE
         public void listarClientesGridView(DataGridView dgv)
         {
             try

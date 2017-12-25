@@ -15,7 +15,7 @@ namespace FruteriaFacturas
     {
 
         Conexion conexion;
-        ArrayList clientesArray;
+        ArrayList clientesArray, albaranesArray, facturasArray;
 
     // CONSTRUCTOR
         public Form1()
@@ -24,9 +24,15 @@ namespace FruteriaFacturas
             
             conexion = new Conexion();
 
-        //CARGO CLIENTES 
+        //CARGO CLIENTES, ALBARANES Y FACTURAS
             cargarClientes();
+            cargarAlbaranes();
+            cargarFacturas();
+
+
             // MessageBox.Show(this.clientesArray.Count.ToString());
+            // MessageBox.Show(this.albaranesArray.Count.ToString());
+            MessageBox.Show(this.facturasArray.Count.ToString());
         }
 
     // CREACION DEL CLIENTE 
@@ -46,7 +52,7 @@ namespace FruteriaFacturas
     // MODIFICACION Y CONSULTA CLIENTE 
         private void facturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ConsultaCliente formConsultaCliente = new ConsultaCliente(clientesArray);
+            ConsultaCliente formConsultaCliente = new ConsultaCliente(clientesArray, albaranesArray, facturasArray);
             // if (!formRepetido(formConsultaCliente))
             // {
                 this.pbfondoMDI.Visible = false;
@@ -84,9 +90,17 @@ namespace FruteriaFacturas
             clientesArray = conexion.cargarClientes();
         }
 
+    //METODO PARA CARGAR ALBARANES
+        public void cargarAlbaranes()
+        {
+            albaranesArray = conexion.cargarAlbaranes();
+        }
 
-        
-
+    // METODO PARA CARGAR FACTURAS
+        public void cargarFacturas()
+        {
+            facturasArray = conexion.cargarFacturas();
+        }
 
     }
 }
