@@ -52,6 +52,35 @@ namespace FruteriaFacturas
             }
         }
 
+        //METODO MODIFICAR CLIENTE
+        public void modificarCliente(String dni_cifOld, String dni_cifNew, String nombre, String domicilio, String poblacion)
+        {
+
+            try
+            {
+                cmd = new SqlCommand("UPDATE Clientes SET dni_cif = '" + dni_cifNew + "', nombre = '" + nombre + "', domicilio = '" + domicilio + "', poblacion = '" + poblacion + "' WHERE dni_cif like '" + dni_cifOld + "'", conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Modificar el cliente" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+    //METODO BORRAR CLIENTE
+        public void borrarCliente(String dni_cif)
+        {
+            try
+            {
+                cmd = new SqlCommand("DELETE FROM Clientes WHERE dni_cif like '" + dni_cif + "'", conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Borrar el cliente" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     // CARGO LOS CLIENTES
         public ArrayList cargarClientes()
         {
@@ -70,6 +99,27 @@ namespace FruteriaFacturas
                 }
             }
             return clientes;
+        }
+
+        public void listarClientesGridView(DataGridView dgv)
+        {
+            try
+            {
+
+                da = new SqlDataAdapter("SELECT * FROM Clientes", conn);
+                dt = new DataTable();
+
+                //Lleno el DataTable
+                da.Fill(dt);
+
+                //Lleno el DataGridView
+                dgv.DataSource = dt;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al listar: " + e.ToString());
+            }
         }
 
 

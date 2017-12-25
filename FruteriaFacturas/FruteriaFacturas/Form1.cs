@@ -33,27 +33,27 @@ namespace FruteriaFacturas
         private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             CreacionCliente formCliente = new CreacionCliente(clientesArray);
-            if (!formRepetido(formCliente))
-            {
+           // if (!formRepetido(formCliente))
+           // {
                 this.pbfondoMDI.Visible = false;
                 formCliente.MdiParent = this;
                 formCliente.WindowState = System.Windows.Forms.FormWindowState.Maximized;
                 formCliente.Show();
 
-            }
+           // }
         }
 
     // MODIFICACION Y CONSULTA CLIENTE 
         private void facturaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConsultaCliente formConsultaCliente = new ConsultaCliente(clientesArray);
-            if (!formRepetido(formConsultaCliente))
-            {
+            // if (!formRepetido(formConsultaCliente))
+            // {
                 this.pbfondoMDI.Visible = false;
                 formConsultaCliente.MdiParent = this;
                 formConsultaCliente.WindowState = System.Windows.Forms.FormWindowState.Maximized;
                 formConsultaCliente.Show();
-            }
+            // }
 
             
         }

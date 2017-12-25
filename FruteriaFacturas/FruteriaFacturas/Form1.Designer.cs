@@ -59,7 +59,7 @@
             this.borradoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(722, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(989, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -75,7 +75,7 @@
             // clientesToolStripMenuItem1
             // 
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
             this.clientesToolStripMenuItem1.Text = "Alta";
             this.clientesToolStripMenuItem1.Click += new System.EventHandler(this.clientesToolStripMenuItem1_Click);
             // 
@@ -147,7 +147,7 @@
             this.pbfondoMDI.Image = ((System.Drawing.Image)(resources.GetObject("pbfondoMDI.Image")));
             this.pbfondoMDI.Location = new System.Drawing.Point(0, 27);
             this.pbfondoMDI.Name = "pbfondoMDI";
-            this.pbfondoMDI.Size = new System.Drawing.Size(722, 416);
+            this.pbfondoMDI.Size = new System.Drawing.Size(989, 499);
             this.pbfondoMDI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbfondoMDI.TabIndex = 3;
             this.pbfondoMDI.TabStop = false;
@@ -157,9 +157,9 @@
             this.tsHoraActual.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tsHoraActual.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslHora});
-            this.tsHoraActual.Location = new System.Drawing.Point(0, 446);
+            this.tsHoraActual.Location = new System.Drawing.Point(0, 501);
             this.tsHoraActual.Name = "tsHoraActual";
-            this.tsHoraActual.Size = new System.Drawing.Size(722, 25);
+            this.tsHoraActual.Size = new System.Drawing.Size(989, 25);
             this.tsHoraActual.TabIndex = 5;
             this.tsHoraActual.Text = "toolStrip1";
             // 
@@ -179,7 +179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(722, 471);
+            this.ClientSize = new System.Drawing.Size(989, 526);
             this.Controls.Add(this.tsHoraActual);
             this.Controls.Add(this.pbfondoMDI);
             this.Controls.Add(this.menuStrip1);
