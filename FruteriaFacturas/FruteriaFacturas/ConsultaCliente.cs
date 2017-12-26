@@ -108,7 +108,7 @@ namespace FruteriaFacturas
                     MessageBox.Show("Cliente Eliminado Correctamente", "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
-                    MessageBox.Show("Este Cliente No se puede borrar ya que posee Albaranes/Facturas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Este Cliente No se puede Borrar/Modificar ya que posee Albaranes/Facturas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
                 MessageBox.Show("Selecciona un Cliente en el Listado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -149,7 +149,7 @@ namespace FruteriaFacturas
                     listarClientesLV();
                 }
                 else
-                    MessageBox.Show("Este Cliente No se puede borrar ya que posee Albaranes/Facturas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Este Cliente No se puede Borrar/Modificar ya que posee Albaranes/Facturas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
                 MessageBox.Show("Selecciona un Cliente en el Listado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

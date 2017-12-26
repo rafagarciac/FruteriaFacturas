@@ -32,7 +32,7 @@ namespace FruteriaFacturas
 
             // MessageBox.Show(this.clientesArray.Count.ToString());
             // MessageBox.Show(this.albaranesArray.Count.ToString());
-            MessageBox.Show(this.facturasArray.Count.ToString());
+            // MessageBox.Show(this.facturasArray.Count.ToString());
         }
 
     // CREACION DEL CLIENTE 
@@ -62,6 +62,19 @@ namespace FruteriaFacturas
             // }
 
             
+        }
+
+    // CREACION ALBARAN
+        private void clientesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            CreacionAlbaran formAltaAlbaran = new CreacionAlbaran(albaranesArray, clientesArray);
+            // if (!formRepetido(formAltaAlbaran))
+            // {
+            this.pbfondoMDI.Visible = false;
+            formAltaAlbaran.MdiParent = this;
+            formAltaAlbaran.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            formAltaAlbaran.Show();
+            // }
         }
 
     //METODO DE VERIFICACION DE FORMULARIOS REPETIDOS
@@ -101,6 +114,8 @@ namespace FruteriaFacturas
         {
             facturasArray = conexion.cargarFacturas();
         }
+
+        
 
     }
 }

@@ -165,7 +165,57 @@ namespace FruteriaFacturas
                 MessageBox.Show("Error al listar: " + e.ToString());
             }
         }
+        /*
+    // LISTO LAS LINEAS DEL Nº ALBARAN PASADO POR PARAMETROS
+        public void listarClientesGridView(int n_Albaran, DataGridView dgv)
+        {
+            try
+            {
 
+                da = new SqlDataAdapter("SELECT ln.* " + 
+                                        "FROM Albaranes al JOIN Lineas ln " + 
+                                        "ON al.idAlbaran = ln.idAlbaran " +
+                                        "WHERE al.idAlbaran = " + n_Albaran, conn);
+                dt = new DataTable();
+
+                //Lleno el DataTable
+                da.Fill(dt);
+
+                //Lleno el DataGridView
+                dgv.DataSource = dt;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al listar: " + e.ToString());
+            }
+        }
+         * */
+
+        //METODO QUE SACA EL ULTIMO ALBARAN Y LO INCREMENTA 
+        public int nuevoAlbaran()
+        {
+            int nuevo = 0;
+
+            cmd = new SqlCommand("SELECT MAX(idAlbaran) FROM Albaranes", conn);
+            dr = cmd.ExecuteReader();
+
+            //SI TIENE FILAS LEELO
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    nuevo = dr.GetInt32(0);
+                }
+            }
+            dr.Close();
+
+            // INCREMENTO EL idAlbaran 
+            nuevo++;
+            // MessageBox.Show(nuevo.ToString());
+
+            return nuevo;
+        }
 
     }
 }
