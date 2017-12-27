@@ -81,6 +81,21 @@ namespace FruteriaFacturas
             }
         }
 
+    // METODO INSERTAR ALBARAN
+        internal void insertarAlbaran(int idAlbaran, DateTime fechaAlbaran, int idFactura, string dni_cifAlbaran, double subtotal, double total)
+        {
+            try{
+
+                cmd = new SqlCommand("INSERT INTO Albaranes VALUES (" + idAlbaran + ", '" + fechaAlbaran + "', " + idFactura + ", '" + dni_cifAlbaran + "', " + subtotal + ", " + total + ")", conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error Insertar Albaran" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     // CARGO LOS CLIENTES
         public ArrayList cargarClientes()
         {
@@ -192,7 +207,7 @@ namespace FruteriaFacturas
         }
          * */
 
-        //METODO QUE SACA EL ULTIMO ALBARAN Y LO INCREMENTA 
+    //METODO QUE SACA EL ULTIMO ALBARAN Y LO INCREMENTA 
         public int nuevoAlbaran()
         {
             int nuevo = 0;
@@ -217,5 +232,26 @@ namespace FruteriaFacturas
             return nuevo;
         }
 
+    //METODO QUE SACA LA ULTIMA FACTURA 
+        public int ultimaFactura()
+        {
+            int idFactura= 0;
+
+            cmd = new SqlCommand("SELECT MAX(idFactura) FROM Facturas", conn);
+            dr = cmd.ExecuteReader();
+
+            //SI TIENE FILAS LEELO
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    idFactura = dr.GetInt32(0);
+                }
+            }
+            dr.Close();
+
+            return idFactura;
+        }
+        
     }
 }
