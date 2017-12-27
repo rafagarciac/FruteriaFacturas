@@ -82,7 +82,7 @@ namespace FruteriaFacturas
         }
 
     // METODO INSERTAR ALBARAN
-        internal void insertarAlbaran(int idAlbaran, DateTime fechaAlbaran, int idFactura, string dni_cifAlbaran, double subtotal, double total)
+        internal void insertarAlbaran(int idAlbaran, DateTime fechaAlbaran, int idFactura, string dni_cifAlbaran, String subtotal, String total)
         {
             try{
 
@@ -91,7 +91,21 @@ namespace FruteriaFacturas
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error Insertar Albaran" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al Insertar Albaran" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+    // METODO INSERTAR LINEAS
+        public void insertarLinea(String cantidad, string unidad, string producto, String precio_unitario, String importe, int idAlbaran)
+        {
+            try
+            {
+                cmd = new SqlCommand("INSERT INTO Lineas VALUES (" + cantidad + ", '" + unidad + "', '" + producto + "', " + precio_unitario + ", " + importe + ", " + idAlbaran + ")", conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Insertar Linea" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -252,6 +266,5 @@ namespace FruteriaFacturas
 
             return idFactura;
         }
-        
     }
 }

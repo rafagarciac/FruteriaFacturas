@@ -9,17 +9,18 @@ namespace FruteriaFacturas
     class Linea
     {
 
-        private double cantidad, precio_unitario;
+        private double cantidad, precio_unitario, importe;
         private String unidad, producto;
 
         public Linea() { }
 
-        public Linea(double cantidad, String unidad, String producto, double precio_unitario)
+        public Linea(double cantidad, String unidad, String producto, double precio_unitario, double importe)
         {
             this.cantidad = cantidad;
             this.unidad = unidad;
             this.producto = producto;
             this.precio_unitario = precio_unitario;
+            this.importe = importe;
         }
 
         // METODOS GETTER / SETTER
@@ -43,6 +44,11 @@ namespace FruteriaFacturas
             return this.precio_unitario;
         }
 
+        public double getImporte()
+        {
+            return this.importe;
+        }
+
         public void setCantidad(double cantidad)
         {
             this.cantidad = cantidad;
@@ -59,6 +65,11 @@ namespace FruteriaFacturas
         public void setPrecio_Unitario(double precio_unitario)
         {
             this.precio_unitario = precio_unitario;
+        }
+
+        public void setImporte(double importe)
+        {
+            this.importe = importe;
         }
     }
 }
