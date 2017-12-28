@@ -254,6 +254,7 @@
             this.btnModificarAlbaran.TabIndex = 18;
             this.btnModificarAlbaran.Text = "MODIFICAR ";
             this.btnModificarAlbaran.UseVisualStyleBackColor = true;
+            this.btnModificarAlbaran.Click += new System.EventHandler(this.botonesForm);
             // 
             // btnBorrarAlbaran
             // 
@@ -265,6 +266,7 @@
             this.btnBorrarAlbaran.TabIndex = 19;
             this.btnBorrarAlbaran.Text = "BORRAR";
             this.btnBorrarAlbaran.UseVisualStyleBackColor = true;
+            this.btnBorrarAlbaran.Click += new System.EventHandler(this.botonesForm);
             // 
             // btnModificarLineas
             // 
@@ -276,6 +278,7 @@
             this.btnModificarLineas.TabIndex = 20;
             this.btnModificarLineas.Text = "MODIFICAR LINEAS";
             this.btnModificarLineas.UseVisualStyleBackColor = true;
+            this.btnModificarLineas.Click += new System.EventHandler(this.botonesForm);
             // 
             // btnGenerarAlbaran
             // 

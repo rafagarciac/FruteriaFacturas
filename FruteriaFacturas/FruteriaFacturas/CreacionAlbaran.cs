@@ -32,7 +32,7 @@ namespace FruteriaFacturas
 
             // CARGAR CLIENTES EN EL COMBOBOX
             cargoClientesComboBox();
-            putNumeroAlbaran();
+            this.lblNumeroAlbaran.Text = putNumeroAlbaran().ToString();
 
             // conexion.nuevoAlbaran();
             // MessageBox.Show(Convert.ToString(this.albaranesArray.Count + 1));
@@ -113,7 +113,7 @@ namespace FruteriaFacturas
             if (this.cbElegirClientes.SelectedItem != null && this.lineasArray.Count > 0)
             {
             // 1º INSERTO EL ALBARAN
-                int idAlbaran = Convert.ToInt32(this.albaranesArray.Count + 1);
+                int idAlbaran = putNumeroAlbaran();
                 DateTime fechaAlbaran = DateTime.Now;
                 int idFactura = conexion.ultimaFactura();
                 Cliente c = (Cliente) clientesArray[this.cbElegirClientes.SelectedIndex];
@@ -128,6 +128,7 @@ namespace FruteriaFacturas
                 if (resultAlbaran == DialogResult.OK)
                 {
                     conexion.insertarAlbaran(idAlbaran, fechaAlbaran, idFactura, dni_cifAlbaran, subtotal.ToString().Replace(',', '.'), total.ToString().Replace(',', '.'));
+                    albaranesArray.Add(new Albaran(idAlbaran, fechaAlbaran, idFactura, dni_cifAlbaran, subtotal, total));
                     refrescarPagina();
 
                 // 2º INSERTO LAS LINEAS DENTRO DEL ALBARAN
@@ -145,6 +146,10 @@ namespace FruteriaFacturas
                         {
                             conexion.insertarLinea(ln.getCantidad().ToString().Replace(',', '.'), ln.getUnidad().ToString(), ln.getProducto().ToString(), ln.getPrecio_Unitario().ToString().Replace(',', '.'), ln.getImporte().ToString().Replace(',', '.'), idAlbaran);
                         }
+
+                        // MENSAJE INSERTO CORRECTAMENTE
+                        MessageBox.Show("Albaran: " + idAlbaran + " y " + lineasArray.Count.ToString() + " Lineas Insertado/as Correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         //LIMPIO ARRAY DE LINEAS
                         this.lineasArray.Clear();
                     } 
@@ -163,7 +168,7 @@ namespace FruteriaFacturas
         public void refrescarPagina()
         {
             this.albaranesArray = conexion.cargarAlbaranes();
-            putNumeroAlbaran();
+            this.lblNumeroAlbaran.Text = putNumeroAlbaran().ToString();
             limpiarTextbox();
             this.lvLineas.Items.Clear();
             this.txtImporte.Text = "";
@@ -241,9 +246,9 @@ namespace FruteriaFacturas
         }
 
     // PONER NUMERO MAX + 1 DE ALBARAN
-        public void putNumeroAlbaran()
+        public int putNumeroAlbaran()
         {
-            this.lblNumeroAlbaran.Text = (this.albaranesArray.Count + 1).ToString();
+            return conexion.nuevoAlbaran();
         }
 
     // COMPROBACION DEL PRODUCTO REPETIDO

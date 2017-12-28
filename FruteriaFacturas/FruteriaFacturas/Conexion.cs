@@ -63,7 +63,21 @@ namespace FruteriaFacturas
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error al Modificar el cliente" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al Modificar el Cliente" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+    // METODO MODIFICAR ALBARAN
+        public void modificarAlbaran(DateTime fecha_Albaran, int idFactura, string dni_cifAlbaran, string subtotal, string total, String idAlbaran)
+        {
+            try
+            {
+                cmd = new SqlCommand("UPDATE Albaranes SET fechaAlbaran = '" + fecha_Albaran + "', idFactura = " + idFactura.ToString() + ", dni_cif = '" + dni_cifAlbaran + "', subtotal = " + subtotal + ", total = " + total + " WHERE idAlbaran = " + idAlbaran, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Modificar el Albaran" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -78,6 +92,20 @@ namespace FruteriaFacturas
             catch (Exception e)
             {
                 MessageBox.Show("Error al Borrar el cliente" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+    // METODO BORRAR ALBARAN
+        public void borrarAlbaran(string idAlbaran)
+        {
+            try
+            {
+                cmd = new SqlCommand("DELETE FROM Albaranes WHERE idAlbaran = " + idAlbaran, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Borrar el Albaran" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -173,6 +201,30 @@ namespace FruteriaFacturas
             return facturas;
         }
 
+        // CARGO LAS LINEAS DEL ALBARAN X
+        public ArrayList cargarLineasAlbaran(String idAlbaran)
+        {
+            ArrayList lineas = new ArrayList();
+
+            cmd = new SqlCommand("SELECT ln.* " +
+                                 "FROM Albaranes al JOIN Lineas ln " +
+                                 "ON al.idAlbaran = ln.idAlbaran " +
+                                 "WHERE al.idAlbaran = " + idAlbaran , conn);
+            dr = cmd.ExecuteReader();
+
+            //SI TIENE FILAS LEELO
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    Linea linea = new Linea(dr.GetDouble(0), dr.GetString(1), dr.GetString(2), dr.GetDouble(3), dr.GetDouble(4));
+                    lineas.Add(linea);
+                }
+            }
+            dr.Close();
+            return lineas;
+        }
+
     //LISTO LOS CLIENTES EN EL GRIDVIEW ALTACLIENTE
         public void listarClientesGridView(DataGridView dgv)
         {
@@ -245,6 +297,8 @@ namespace FruteriaFacturas
 
             return nuevo;
         }
+
+    //   
 
     //METODO QUE SACA LA ULTIMA FACTURA 
         public int ultimaFactura()
