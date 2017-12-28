@@ -77,6 +77,19 @@ namespace FruteriaFacturas
             // }
         }
 
+    // MODIFICACION ALBARAN
+        private void albaranToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ConsultaAlbaran consultaAlbaran = new ConsultaAlbaran(albaranesArray, clientesArray,  facturasArray);
+            // if (!formRepetido(consultaAlbaran))
+            // {
+            this.pbfondoMDI.Visible = false;
+            consultaAlbaran.MdiParent = this;
+            consultaAlbaran.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            consultaAlbaran.Show();
+            // }
+        }
+
     //METODO DE VERIFICACION DE FORMULARIOS REPETIDOS
         public bool formRepetido(Form form)
         {
@@ -114,8 +127,6 @@ namespace FruteriaFacturas
         {
             facturasArray = conexion.cargarFacturas();
         }
-
-        
-
+           
     }
 }

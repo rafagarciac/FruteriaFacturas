@@ -56,6 +56,12 @@
     <Compile Include="Albaran.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="ConsultaAlbaran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaAlbaran.Designer.cs">
+      <DependentUpon>ConsultaAlbaran.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConsultaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     <Compile Include="Linea.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConsultaAlbaran.resx">
+      <DependentUpon>ConsultaAlbaran.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConsultaCliente.resx">
       <DependentUpon>ConsultaCliente.cs</DependentUpon>
     </EmbeddedResource>
