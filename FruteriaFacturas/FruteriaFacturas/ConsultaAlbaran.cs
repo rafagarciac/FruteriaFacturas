@@ -138,24 +138,34 @@ namespace FruteriaFacturas
                         {
                             if (al.getIdAlbaran().ToString().Equals(listItem.SubItems[0].Text))
                             {
-                                al.setFechaAlbaran(this.dtpFechaAlbaran.Value);
-                                Cliente c = (Cliente)clientesArray[this.cbClientes.SelectedIndex];
-                                dni_cifAlbaran = c.getDni_Cif().ToString();
-                                al.setDni_Cif(dni_cifAlbaran);
-                                al.setSubtotal(Convert.ToDouble(this.txtSubtotal.Text.Replace('.', ',')));
-                                al.setTotal(Convert.ToDouble(this.txtTotal.Text.Replace('.', ',')));
-                                al.setIdFactura(Convert.ToInt32(this.nudIdFactura.Value));
+                                if (this.cbClientes.SelectedIndex >= 0)
+                                {
 
+                                    al.setFechaAlbaran(this.dtpFechaAlbaran.Value);
+                                    Cliente c = (Cliente)clientesArray[this.cbClientes.SelectedIndex];
+                                    dni_cifAlbaran = c.getDni_Cif().ToString();
+                                    al.setDni_Cif(dni_cifAlbaran);
+                                    al.setSubtotal(Convert.ToDouble(this.txtSubtotal.Text.Replace('.', ',')));
+                                    al.setTotal(Convert.ToDouble(this.txtTotal.Text.Replace('.', ',')));
+                                    al.setIdFactura(Convert.ToInt32(this.nudIdFactura.Value));
+                                }          
                             }
                         }
 
-                    //UPDATE Albaranes SET fechaAlbaran = '02-12-1998', idFactura = 3, dni_cif = '518541KD', subtotal = 23.2, total = 120.2 WHERE idAlbaran = 13;
-                        conexion.modificarAlbaran(this.dtpFechaAlbaran.Value, Convert.ToInt32(this.nudIdFactura.Value), dni_cifAlbaran, this.txtSubtotal.Text.Replace(',', '.'), this.txtTotal.Text.Replace(',', '.'), listItem.SubItems[0].Text);
-                    MessageBox.Show("Albaran Modificado Correctamente", "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    lvListadoAlbaran.Items.Clear();
-                    limpiarControles();
+                        if (this.cbClientes.SelectedIndex >= 0)
+                        {
 
-                    cargarAlbaranesLV();
+                            //UPDATE Albaranes SET fechaAlbaran = '02-12-1998', idFactura = 3, dni_cif = '518541KD', subtotal = 23.2, total = 120.2 WHERE idAlbaran = 13;
+                            conexion.modificarAlbaran(this.dtpFechaAlbaran.Value, Convert.ToInt32(this.nudIdFactura.Value), dni_cifAlbaran, this.txtSubtotal.Text.Replace(',', '.'), this.txtTotal.Text.Replace(',', '.'), listItem.SubItems[0].Text);
+                            MessageBox.Show("Albaran Modificado Correctamente", "Ayuda", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            lvListadoAlbaran.Items.Clear();
+                            limpiarControles();
+
+                            cargarAlbaranesLV();
+                        }
+                        else
+                            MessageBox.Show("Elige Cliente en el Desplegable", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
 
                     }
                     else
@@ -164,7 +174,15 @@ namespace FruteriaFacturas
             // BOTON MODIFICAR LINEAS
                 else if (btnSeleccionado.Name.Equals(btnModificarLineas.Name))
                 {
-
+                    Albaran albaran = new Albaran();
+                    foreach (Albaran al in albaranesArray)
+                    {
+                        if (al.getIdAlbaran().ToString().Equals(listItem.SubItems[0].Text))
+                            albaran = al;
+                    }
+                        
+                    CreacionAlbaran modificarLineasAlbaran = new CreacionAlbaran(albaran, listItem.SubItems[2].Text);
+                    modificarLineasAlbaran.Show();
                 }
             }
             else

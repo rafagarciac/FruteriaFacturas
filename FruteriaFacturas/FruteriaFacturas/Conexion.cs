@@ -81,6 +81,34 @@ namespace FruteriaFacturas
             }
         }
 
+    // METODO MODIFICAR LINEA EN ALBARAN X
+        public void modificarLinea(string cantidad, string unidad, string producto, string precio, string importe, string old_producto, string idAlbaran)
+        {
+            try
+            {
+                cmd = new SqlCommand("UPDATE Lineas SET cantidad = " + cantidad + ", unidad = '" + unidad + "', descripcion_producto = '" + producto + "', precio_unitario = " + precio + ", importe = " + importe + " WHERE descripcion_producto = '" + old_producto + "' AND idAlbaran = " + idAlbaran, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Modificar la linea: " + producto + "en Albaran " + idAlbaran + " " + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //METODO MODIFICAR SUBTOTAL Y TOTAL DE ALBARAN
+        internal void modificarImporteAlbaran(string subtotal, string total, string idAlbaran)
+        {
+            try
+            {
+                cmd = new SqlCommand("UPDATE Albaranes SET subtotal = " + subtotal + ", total = " + total + " WHERE idAlbaran = " + idAlbaran, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Modificar el Albaran: " + idAlbaran + " " + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     //METODO BORRAR CLIENTE
         public void borrarCliente(String dni_cif)
         {
@@ -106,6 +134,20 @@ namespace FruteriaFacturas
             catch (Exception e)
             {
                 MessageBox.Show("Error al Borrar el Albaran" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // METODO BORRAR LINEA DEL ALBARAN X
+        internal void borrarLinea(string producto, string idAlbaran)
+        {
+            try
+            {
+                cmd = new SqlCommand("DELETE FROM Lineas WHERE descripcion_producto = '" + producto + "' AND idAlbaran = " + idAlbaran, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Borrar la linea: " + producto + "en Albaran " + idAlbaran + " " + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -320,5 +362,7 @@ namespace FruteriaFacturas
 
             return idFactura;
         }
+
+
     }
 }

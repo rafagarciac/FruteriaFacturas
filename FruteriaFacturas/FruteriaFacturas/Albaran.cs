@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FruteriaFacturas
 {
-    class Albaran
+    public class Albaran
     {
         /// <summary>
         ///  FK --> idfactura y dni_cif
