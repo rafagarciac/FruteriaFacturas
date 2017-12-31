@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace FruteriaFacturas
 {
@@ -196,6 +197,23 @@ namespace FruteriaFacturas
                 if (c is TextBox)
                     c.ResetText();
             }
+        }
+
+    // BOTON REPORTE CLIENTES
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //PATH DEL CRYSTALREPORTDOCUMENT
+            //C:\Users\Proyectos\Source\Repos\FruteriaFacturas\FruteriaFacturas\FruteriaFacturas\ListadoClientes.rpt
+            
+            //CREO EL DOCUMENTO 
+            ReportDocument crystalrpt = new ReportDocument();
+            crystalrpt.Load(@"C:\Users\Proyectos\Source\Repos\FruteriaFacturas\FruteriaFacturas\FruteriaFacturas\ListadoClientes.rpt");
+
+            //Le paso al Formulario de Vista el Report Document
+            VistaReporte vista = new VistaReporte(crystalrpt);
+            vista.Show();
+
+            
         }
 
     }

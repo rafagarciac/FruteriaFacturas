@@ -17,6 +17,7 @@ namespace FruteriaFacturas
         ArrayList albaranesArray;
         ArrayList clientesArray;
         ArrayList lineasArray;
+        ArrayList lineasNuevasArray;
         Albaran alModificar;
 
         double totalImporte = 0;
@@ -53,6 +54,7 @@ namespace FruteriaFacturas
             alModificar = albaran;
 
             lineasArray = conexion.cargarLineasAlbaran(albaran.getIdAlbaran().ToString());
+            this.lineasNuevasArray = new ArrayList();
 
             //OCULTO COMPONENTES DE INSERTAR
             this.cbElegirClientes.Visible = false;
@@ -137,12 +139,14 @@ namespace FruteriaFacturas
             {
                 if (!repetido)
                 {
+
                     double importeLinea = 0;
 
                     importeLinea = Convert.ToDouble(this.txtCantidad.Text.Replace('.', ',')) * Convert.ToDouble(this.txtPrecio.Text.Replace('.', ','));
                     totalImporte += importeLinea;
                     this.txtImporte.Text = "";
                     this.txtImporte.Text = totalImporte.ToString() + " €";
+
 
                     // INSERTO EN LISTVIEW
 
@@ -153,6 +157,11 @@ namespace FruteriaFacturas
 
                     // LO AÑADO EN EL ARRAYLIST
                     this.lineasArray.Add(new Linea(Convert.ToDouble(this.txtCantidad.Text.Replace('.', ',')), this.txtUnidad.Text.ToUpper(), this.txtProducto.Text.ToUpper(), Convert.ToDouble(this.txtPrecio.Text.Replace('.', ',')), importeLinea));
+                    if (formModificacion)
+                    {
+                        calcularImporteAlbaran();
+                        this.lineasNuevasArray.Add(new Linea(Convert.ToDouble(this.txtCantidad.Text.Replace('.', ',')), this.txtUnidad.Text.ToUpper(), this.txtProducto.Text.ToUpper(), Convert.ToDouble(this.txtPrecio.Text.Replace('.', ',')), importeLinea));
+                    }
                 }else
                     MessageBox.Show("Producto Repetido: " + this.txtProducto.Text.ToUpper(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -449,11 +458,12 @@ namespace FruteriaFacturas
                         if (ln.getProducto().ToString().Equals(listItem.SubItems[2].Text))
                             lnBorrada = ln;
                     }
-                    MessageBox.Show(totalImporte.ToString());
 
                     totalImporte -= Convert.ToDouble(lnBorrada.getCantidad()) * Convert.ToDouble(lnBorrada.getPrecio_Unitario());
                     this.txtImporte.Text = "";
                     this.txtImporte.Text = totalImporte.ToString() + " €";
+
+                    //calcularImporteAlbaran();
 
 
                     // BORRO DEL ARRAYLIST DE LINEAS
@@ -481,7 +491,6 @@ namespace FruteriaFacturas
                     
                     // CODIGO PARA MODIFICAR LINEA
                     // COMPRUEBO QUE EL PRODUCTO NO SEA REPETIDO
-                    bool repetido = comprobarProductoRepetido(this.txtProducto.Text.ToUpper());
 
                     try
                     {
@@ -502,11 +511,8 @@ namespace FruteriaFacturas
 
                                 calcularImporteAlbaran();
                                 cargarLineasLV();
-                            }else
-                                MessageBox.Show("No se puede Repetir el Producto: " + this.txtProducto.Text.ToUpper(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-
-
                     }
                     catch (FormatException)
                     {
@@ -519,7 +525,24 @@ namespace FruteriaFacturas
             }
             else if (btnSeleccionado.Name.Equals("btnModificarLineasAlbaran"))
             {
+                String salidaLinea = "";
+                foreach (Linea ln in lineasNuevasArray)
+                {
+                    salidaLinea += "CANTIDAD: " + ln.getCantidad().ToString() + " UNIDAD: " + ln.getUnidad() + " PRODUCTO: " + ln.getProducto() + " PRECIO_UNITARIO: " + ln.getPrecio_Unitario().ToString() + " IMPORTE: " + ln.getImporte().ToString() + "€\n";
+                }
 
+                DialogResult resultLineas = MessageBox.Show(salidaLinea, "DATOS LINEAS ALBARAN " + alModificar.getIdAlbaran().ToString(), MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+
+                if (resultLineas == DialogResult.OK)
+                {
+                    foreach (Linea ln in lineasNuevasArray)
+                    {
+                        conexion.insertarLinea(ln.getCantidad().ToString().Replace(',', '.'), ln.getUnidad().ToString(), ln.getProducto().ToString(), ln.getPrecio_Unitario().ToString().Replace(',', '.'), ln.getImporte().ToString().Replace(',', '.'), alModificar.getIdAlbaran());
+                    }
+
+                    // MENSAJE INSERTO CORRECTAMENTE
+                    MessageBox.Show("Albaran: " + alModificar.getIdAlbaran().ToString() + " y " + lineasNuevasArray.Count.ToString() + " Lineas Insertado/as Correctamente", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
         }
@@ -527,13 +550,15 @@ namespace FruteriaFacturas
     // METODO QUE RESPONDE AL EVVENTO DE CERRAR LA VENTANA
         private void CreacionAlbaran_FormClosing(object sender, FormClosingEventArgs e)
         {
+
             if (formModificacion)
             {
                 DialogResult result = MessageBox.Show("Quieres Guardar el Importe del Albaran?", "Informacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
                 if (result == DialogResult.OK)
                 {
-                    String subtotal = this.txtImporte.Text.Replace(',', '.');
-                    String total = Convert.ToString((Convert.ToDouble(this.txtImporte.Text) * 0.4) + Convert.ToDouble(this.txtImporte.Text)).Replace(',', '.');
+                    String subtotal = totalImporte.ToString().Replace(',', '.'); 
+                    String total = Convert.ToString((totalImporte * 0.4) + totalImporte).Replace(',', '.');
                     String idAlbaran = alModificar.getIdAlbaran().ToString();
                     conexion.modificarImporteAlbaran(subtotal, total, idAlbaran);
                     MessageBox.Show("Albaran: " + idAlbaran + " Se ha actualizado con un Subtotal de: " + subtotal.ToString().Replace('.', ',') + " y un Total de: " + total.ToString().Replace('.', ','), "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);

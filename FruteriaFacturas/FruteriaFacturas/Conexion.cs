@@ -362,7 +362,5 @@ namespace FruteriaFacturas
 
             return idFactura;
         }
-
-
     }
 }

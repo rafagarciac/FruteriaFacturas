@@ -69,6 +69,9 @@ namespace FruteriaFacturas
     // CARGO LOS ALBARANES EN EL LISTVIEW
         public void cargarAlbaranesLV()
         {
+            this.lvListadoAlbaran.Items.Clear();
+            this.albaranesArray.Clear();
+            this.albaranesArray = conexion.cargarAlbaranes();
             foreach(Albaran al in albaranesArray){
 
                 ListViewItem item = lvListadoAlbaran.Items.Add(al.getIdAlbaran().ToString(), "albaran");
@@ -201,6 +204,11 @@ namespace FruteriaFacturas
                     c.ResetText();
                 }
             }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            cargarAlbaranesLV();
         }
 
 

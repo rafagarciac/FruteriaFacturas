@@ -55,6 +55,7 @@
             this.btnGenerarAlbaran = new System.Windows.Forms.Button();
             this.lblEuroSubtotal = new System.Windows.Forms.Label();
             this.lblEuroTotal = new System.Windows.Forms.Label();
+            this.btnActualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdAlbaran)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdFactura)).BeginInit();
             this.SuspendLayout();
@@ -319,11 +320,26 @@
             this.lblEuroTotal.TabIndex = 24;
             this.lblEuroTotal.Text = "€";
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnActualizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnActualizar.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.Location = new System.Drawing.Point(712, 27);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(245, 34);
+            this.btnActualizar.TabIndex = 25;
+            this.btnActualizar.Text = "ACTUALIZAR LISTA";
+            this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
             // ConsultaAlbaran
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 481);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.lblEuroTotal);
             this.Controls.Add(this.lblEuroSubtotal);
             this.Controls.Add(this.btnGenerarAlbaran);
@@ -381,5 +397,6 @@
         private System.Windows.Forms.Button btnGenerarAlbaran;
         private System.Windows.Forms.Label lblEuroSubtotal;
         private System.Windows.Forms.Label lblEuroTotal;
+        private System.Windows.Forms.Button btnActualizar;
     }
 }
