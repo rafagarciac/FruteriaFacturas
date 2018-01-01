@@ -15,17 +15,29 @@ namespace FruteriaFacturas
     {
 
         ReportDocument crystalrpt;
+        String idAlbaran;
 
-        public VistaReporte(ReportDocument crystalrpt)
+        public VistaReporte(ReportDocument crystalrpt, String idAlbaran)
         {
             InitializeComponent();
             this.crystalrpt = crystalrpt;
+            this.idAlbaran = idAlbaran;
         }
 
         private void VistaReporte_Load(object sender, EventArgs e)
         {
-            this.crystalReportViewer1.ReportSource = crystalrpt;
-            this.crystalReportViewer1.Refresh();
+            if (!idAlbaran.Equals(""))
+            {
+                ListadoAlbaran listadoAlbaran = new ListadoAlbaran();
+                listadoAlbaran.SetParameterValue("@idAlbaran", idAlbaran);
+                this.crystalReportViewer1.ReportSource = listadoAlbaran;
+                this.crystalReportViewer1.Refresh();
+            }
+            else
+            {
+                this.crystalReportViewer1.ReportSource = crystalrpt;
+                this.crystalReportViewer1.Refresh();
+            }
         }
 
     }

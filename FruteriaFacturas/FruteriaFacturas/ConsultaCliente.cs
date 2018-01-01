@@ -210,7 +210,7 @@ namespace FruteriaFacturas
             crystalrpt.Load(@"C:\Users\Proyectos\Source\Repos\FruteriaFacturas\FruteriaFacturas\FruteriaFacturas\ListadoClientes.rpt");
 
             //Le paso al Formulario de Vista el Report Document
-            VistaReporte vista = new VistaReporte(crystalrpt);
+            VistaReporte vista = new VistaReporte(crystalrpt, "");
             vista.Show();
 
             

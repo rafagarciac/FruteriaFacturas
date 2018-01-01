@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace FruteriaFacturas
 {
@@ -206,9 +207,28 @@ namespace FruteriaFacturas
             }
         }
 
+    // ACTUALIZAR LA LISTA DE LISTVIEW
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             cargarAlbaranesLV();
+        }
+
+    // BOTON DE GENERAR DOCUMENTO PDF CRYSTAL REPORTS
+        private void btnGenerarAlbaran_Click(object sender, EventArgs e)
+        {
+
+            /*//CREO EL DOCUMENTO 
+            ReportDocument crystalrpt = new ReportDocument();
+            crystalrpt.Load(@"C:\Users\Proyectos\Source\Repos\FruteriaFacturas\FruteriaFacturas\FruteriaFacturas\ListadoAlbaran.rpt");*/
+
+            //Le paso al Formulario de Vista el Report Document
+            if (lvListadoAlbaran.SelectedItems.Count > 0)
+            {
+                ListViewItem listItem = lvListadoAlbaran.SelectedItems[0];
+                VistaReporte vista = new VistaReporte(null, listItem.SubItems[0].Text);
+                vista.Show();
+            }else
+                MessageBox.Show("Selecciona un Albaran en el Listado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 

@@ -295,6 +295,7 @@
             this.btnGenerarAlbaran.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGenerarAlbaran.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerarAlbaran.UseVisualStyleBackColor = true;
+            this.btnGenerarAlbaran.Click += new System.EventHandler(this.btnGenerarAlbaran_Click);
             // 
             // lblEuroSubtotal
             // 
