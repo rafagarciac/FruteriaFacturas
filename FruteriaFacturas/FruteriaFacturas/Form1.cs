@@ -127,6 +127,27 @@ namespace FruteriaFacturas
         {
             facturasArray = conexion.cargarFacturas();
         }
+
+    //CREACION FACTURA
+        private void clientesToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            CreacionFactura formFactura = new CreacionFactura(albaranesArray, clientesArray);
+            this.pbfondoMDI.Visible = false;
+            formFactura.MdiParent = this;
+            formFactura.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            formFactura.Show();
+
+        }
+
+    // CONSULTA FACTURA
+        private void albaranToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            ConsultaFactura formConsultaFactura = new ConsultaFactura(facturasArray, albaranesArray, clientesArray);
+            this.pbfondoMDI.Visible = false;
+            formConsultaFactura.MdiParent = this;
+            formConsultaFactura.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            formConsultaFactura.Show();
+        }
            
     }
 }

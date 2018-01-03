@@ -40,7 +40,6 @@
             this.borradoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.albaranToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.facturaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.pbfondoMDI = new System.Windows.Forms.PictureBox();
             this.tsHoraActual = new System.Windows.Forms.ToolStrip();
             this.tslHora = new System.Windows.Forms.ToolStripLabel();
@@ -74,8 +73,8 @@
             // clientesToolStripMenuItem1
             // 
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
-            this.clientesToolStripMenuItem1.Text = "Alta";
+            this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(241, 22);
+            this.clientesToolStripMenuItem1.Text = "Alta Cliente";
             this.clientesToolStripMenuItem1.Click += new System.EventHandler(this.clientesToolStripMenuItem1_Click);
             // 
             // facturaToolStripMenuItem
@@ -112,8 +111,7 @@
             // 
             this.borradoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clientesToolStripMenuItem3,
-            this.albaranToolStripMenuItem2,
-            this.facturaToolStripMenuItem2});
+            this.albaranToolStripMenuItem2});
             this.borradoToolStripMenuItem.Name = "borradoToolStripMenuItem";
             this.borradoToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.borradoToolStripMenuItem.Text = "Facturas";
@@ -121,20 +119,16 @@
             // clientesToolStripMenuItem3
             // 
             this.clientesToolStripMenuItem3.Name = "clientesToolStripMenuItem3";
-            this.clientesToolStripMenuItem3.Size = new System.Drawing.Size(116, 22);
-            this.clientesToolStripMenuItem3.Text = "Clientes";
+            this.clientesToolStripMenuItem3.Size = new System.Drawing.Size(238, 22);
+            this.clientesToolStripMenuItem3.Text = "Nueva Factura";
+            this.clientesToolStripMenuItem3.Click += new System.EventHandler(this.clientesToolStripMenuItem3_Click);
             // 
             // albaranToolStripMenuItem2
             // 
             this.albaranToolStripMenuItem2.Name = "albaranToolStripMenuItem2";
-            this.albaranToolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
-            this.albaranToolStripMenuItem2.Text = "Albaran";
-            // 
-            // facturaToolStripMenuItem2
-            // 
-            this.facturaToolStripMenuItem2.Name = "facturaToolStripMenuItem2";
-            this.facturaToolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
-            this.facturaToolStripMenuItem2.Text = "Factura";
+            this.albaranToolStripMenuItem2.Size = new System.Drawing.Size(238, 22);
+            this.albaranToolStripMenuItem2.Text = "Consulta/Modificacion Factura";
+            this.albaranToolStripMenuItem2.Click += new System.EventHandler(this.albaranToolStripMenuItem2_Click);
             // 
             // pbfondoMDI
             // 
@@ -201,7 +195,6 @@
         private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem albaranToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem albaranToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem facturaToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem3;

@@ -179,6 +179,19 @@ namespace FruteriaFacturas
             }
         }
 
+    // METODO INSERTAR FACTUEA
+        public void insertarFactura(String idFactura, DateTime fechaFactura, String subtotal, String total, String dni_cifCliente){
+            try{
+
+                cmd = new SqlCommand("INSERT INTO Facturas VALUES(" + idFactura + ", '" + fechaFactura + "', " + subtotal + ", " + total + ", '" + dni_cifCliente + "');", conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Insertar Factura" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
     // CARGO LOS CLIENTES
         public ArrayList cargarClientes()
@@ -340,6 +353,31 @@ namespace FruteriaFacturas
             return nuevo;
         }
 
+        //METODO QUE SACA LA ULTIMA FACTURA Y LO INCREMENTA 
+        public int nuevaFactura()
+        {
+            int idFactura = 0;
+
+            cmd = new SqlCommand("SELECT MAX(idFactura) FROM Facturas", conn);
+            dr = cmd.ExecuteReader();
+
+            //SI TIENE FILAS LEELO
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    idFactura = dr.GetInt32(0);
+                }
+            }
+            dr.Close();
+
+            // INCREMENTO EL idAlbaran 
+            idFactura++;
+            // MessageBox.Show(nuevo.ToString());
+
+            return idFactura;
+        }
+
     //   
 
     //METODO QUE SACA LA ULTIMA FACTURA 
@@ -362,5 +400,21 @@ namespace FruteriaFacturas
 
             return idFactura;
         }
+
+    // METODO MOFICIAR EL ID_ALBARAN
+        public void modificarIdFacturaAlbaran(string idAlbaran, string idFactura)
+        {
+            try
+            {
+                cmd = new SqlCommand("UPDATE Albaranes SET idFactura = " + idFactura + " WHERE idAlbaran = " + idAlbaran, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Modificar el Albaran: " + idAlbaran, "Aviso" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        
     }
 }
