@@ -15,13 +15,14 @@ namespace FruteriaFacturas
     {
 
         ReportDocument crystalrpt;
-        String idAlbaran;
+        String idAlbaran, idFactura;
 
-        public VistaReporte(ReportDocument crystalrpt, String idAlbaran)
+        public VistaReporte(ReportDocument crystalrpt, String idAlbaran, String idFactura)
         {
             InitializeComponent();
             this.crystalrpt = crystalrpt;
             this.idAlbaran = idAlbaran;
+            this.idFactura = idFactura;
         }
 
         private void VistaReporte_Load(object sender, EventArgs e)
@@ -31,6 +32,13 @@ namespace FruteriaFacturas
                 ListadoAlbaran listadoAlbaran = new ListadoAlbaran();
                 listadoAlbaran.SetParameterValue("@idAlbaran", idAlbaran);
                 this.crystalReportViewer1.ReportSource = listadoAlbaran;
+                this.crystalReportViewer1.Refresh();
+            }
+            else if (!idFactura.Equals(""))
+            {
+                ListadoFactura listadoFactura = new ListadoFactura();
+                listadoFactura.SetParameterValue("@idFactura", idFactura);
+                this.crystalReportViewer1.ReportSource = listadoFactura;
                 this.crystalReportViewer1.Refresh();
             }
             else

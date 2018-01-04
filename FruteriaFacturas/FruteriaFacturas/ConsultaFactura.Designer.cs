@@ -32,28 +32,28 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaFactura));
             this.lblListadoFacturas = new System.Windows.Forms.Label();
             this.lvFacturas = new System.Windows.Forms.ListView();
-            this.gbDatosFactura = new System.Windows.Forms.GroupBox();
             this.chIdFactura = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chFechaFactura = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chSubtotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTotal = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDni_Cif = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lblIdFactura = new System.Windows.Forms.Label();
-            this.lblFechaFactura = new System.Windows.Forms.Label();
-            this.lblSubtotal = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.lblCliente = new System.Windows.Forms.Label();
-            this.nudIdFactura = new System.Windows.Forms.NumericUpDown();
-            this.dtpFechaFactura = new System.Windows.Forms.DateTimePicker();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.gbDatosFactura = new System.Windows.Forms.GroupBox();
+            this.lblEuroSubTotal = new System.Windows.Forms.Label();
+            this.lblEuroTotal = new System.Windows.Forms.Label();
             this.cbClientes = new System.Windows.Forms.ComboBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
-            this.lblEuroTotal = new System.Windows.Forms.Label();
-            this.lblEuroSubTotal = new System.Windows.Forms.Label();
+            this.dtpFechaFactura = new System.Windows.Forms.DateTimePicker();
+            this.nudIdFactura = new System.Windows.Forms.NumericUpDown();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.lblSubtotal = new System.Windows.Forms.Label();
+            this.lblFechaFactura = new System.Windows.Forms.Label();
+            this.lblIdFactura = new System.Windows.Forms.Label();
             this.btnBorrarFactura = new System.Windows.Forms.Button();
             this.btnModificarFactura = new System.Windows.Forms.Button();
             this.btnGenerarAlbaran = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.gbDatosFactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdFactura)).BeginInit();
             this.SuspendLayout();
@@ -88,28 +88,6 @@
             this.lvFacturas.View = System.Windows.Forms.View.Details;
             this.lvFacturas.Click += new System.EventHandler(this.lvFacturas_Click);
             // 
-            // gbDatosFactura
-            // 
-            this.gbDatosFactura.Controls.Add(this.lblEuroSubTotal);
-            this.gbDatosFactura.Controls.Add(this.lblEuroTotal);
-            this.gbDatosFactura.Controls.Add(this.cbClientes);
-            this.gbDatosFactura.Controls.Add(this.txtTotal);
-            this.gbDatosFactura.Controls.Add(this.txtSubtotal);
-            this.gbDatosFactura.Controls.Add(this.dtpFechaFactura);
-            this.gbDatosFactura.Controls.Add(this.nudIdFactura);
-            this.gbDatosFactura.Controls.Add(this.lblCliente);
-            this.gbDatosFactura.Controls.Add(this.lblTotal);
-            this.gbDatosFactura.Controls.Add(this.lblSubtotal);
-            this.gbDatosFactura.Controls.Add(this.lblFechaFactura);
-            this.gbDatosFactura.Controls.Add(this.lblIdFactura);
-            this.gbDatosFactura.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDatosFactura.Location = new System.Drawing.Point(580, 122);
-            this.gbDatosFactura.Name = "gbDatosFactura";
-            this.gbDatosFactura.Size = new System.Drawing.Size(386, 277);
-            this.gbDatosFactura.TabIndex = 7;
-            this.gbDatosFactura.TabStop = false;
-            this.gbDatosFactura.Text = "Datos Factura";
-            // 
             // chIdFactura
             // 
             this.chIdFactura.Text = "Id Factura";
@@ -139,74 +117,57 @@
             this.chDni_Cif.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chDni_Cif.Width = 122;
             // 
-            // lblIdFactura
+            // imageList1
             // 
-            this.lblIdFactura.AutoSize = true;
-            this.lblIdFactura.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIdFactura.Location = new System.Drawing.Point(6, 38);
-            this.lblIdFactura.Name = "lblIdFactura";
-            this.lblIdFactura.Size = new System.Drawing.Size(117, 24);
-            this.lblIdFactura.TabIndex = 0;
-            this.lblIdFactura.Text = "Id Factura: ";
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "factura.png");
             // 
-            // lblFechaFactura
+            // gbDatosFactura
             // 
-            this.lblFechaFactura.AutoSize = true;
-            this.lblFechaFactura.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaFactura.Location = new System.Drawing.Point(6, 81);
-            this.lblFechaFactura.Name = "lblFechaFactura";
-            this.lblFechaFactura.Size = new System.Drawing.Size(155, 24);
-            this.lblFechaFactura.TabIndex = 1;
-            this.lblFechaFactura.Text = "Fecha Factura: ";
+            this.gbDatosFactura.Controls.Add(this.lblEuroSubTotal);
+            this.gbDatosFactura.Controls.Add(this.lblEuroTotal);
+            this.gbDatosFactura.Controls.Add(this.cbClientes);
+            this.gbDatosFactura.Controls.Add(this.txtTotal);
+            this.gbDatosFactura.Controls.Add(this.txtSubtotal);
+            this.gbDatosFactura.Controls.Add(this.dtpFechaFactura);
+            this.gbDatosFactura.Controls.Add(this.nudIdFactura);
+            this.gbDatosFactura.Controls.Add(this.lblCliente);
+            this.gbDatosFactura.Controls.Add(this.lblTotal);
+            this.gbDatosFactura.Controls.Add(this.lblSubtotal);
+            this.gbDatosFactura.Controls.Add(this.lblFechaFactura);
+            this.gbDatosFactura.Controls.Add(this.lblIdFactura);
+            this.gbDatosFactura.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbDatosFactura.Location = new System.Drawing.Point(580, 122);
+            this.gbDatosFactura.Name = "gbDatosFactura";
+            this.gbDatosFactura.Size = new System.Drawing.Size(386, 277);
+            this.gbDatosFactura.TabIndex = 7;
+            this.gbDatosFactura.TabStop = false;
+            this.gbDatosFactura.Text = "Datos Factura";
             // 
-            // lblSubtotal
+            // lblEuroSubTotal
             // 
-            this.lblSubtotal.AutoSize = true;
-            this.lblSubtotal.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubtotal.Location = new System.Drawing.Point(6, 127);
-            this.lblSubtotal.Name = "lblSubtotal";
-            this.lblSubtotal.Size = new System.Drawing.Size(97, 24);
-            this.lblSubtotal.TabIndex = 2;
-            this.lblSubtotal.Text = "Subtotal: ";
+            this.lblEuroSubTotal.AutoSize = true;
+            this.lblEuroSubTotal.BackColor = System.Drawing.Color.White;
+            this.lblEuroSubTotal.Cursor = System.Windows.Forms.Cursors.Help;
+            this.lblEuroSubTotal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEuroSubTotal.Location = new System.Drawing.Point(341, 131);
+            this.lblEuroSubTotal.Name = "lblEuroSubTotal";
+            this.lblEuroSubTotal.Size = new System.Drawing.Size(17, 19);
+            this.lblEuroSubTotal.TabIndex = 26;
+            this.lblEuroSubTotal.Text = "€";
             // 
-            // lblTotal
+            // lblEuroTotal
             // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(6, 172);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(67, 24);
-            this.lblTotal.TabIndex = 3;
-            this.lblTotal.Text = "Total: ";
-            // 
-            // lblCliente
-            // 
-            this.lblCliente.AutoSize = true;
-            this.lblCliente.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCliente.Location = new System.Drawing.Point(6, 214);
-            this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(85, 24);
-            this.lblCliente.TabIndex = 4;
-            this.lblCliente.Text = "Cliente: ";
-            // 
-            // nudIdFactura
-            // 
-            this.nudIdFactura.Enabled = false;
-            this.nudIdFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudIdFactura.Location = new System.Drawing.Point(194, 39);
-            this.nudIdFactura.Name = "nudIdFactura";
-            this.nudIdFactura.Size = new System.Drawing.Size(120, 26);
-            this.nudIdFactura.TabIndex = 13;
-            this.nudIdFactura.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // dtpFechaFactura
-            // 
-            this.dtpFechaFactura.CalendarFont = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaFactura.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaFactura.Location = new System.Drawing.Point(182, 85);
-            this.dtpFechaFactura.Name = "dtpFechaFactura";
-            this.dtpFechaFactura.Size = new System.Drawing.Size(176, 22);
-            this.dtpFechaFactura.TabIndex = 17;
+            this.lblEuroTotal.AutoSize = true;
+            this.lblEuroTotal.BackColor = System.Drawing.Color.White;
+            this.lblEuroTotal.Cursor = System.Windows.Forms.Cursors.Help;
+            this.lblEuroTotal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEuroTotal.Location = new System.Drawing.Point(341, 176);
+            this.lblEuroTotal.Name = "lblEuroTotal";
+            this.lblEuroTotal.Size = new System.Drawing.Size(17, 19);
+            this.lblEuroTotal.TabIndex = 25;
+            this.lblEuroTotal.Text = "€";
             // 
             // cbClientes
             // 
@@ -236,29 +197,74 @@
             this.txtSubtotal.TabIndex = 18;
             this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // lblEuroTotal
+            // dtpFechaFactura
             // 
-            this.lblEuroTotal.AutoSize = true;
-            this.lblEuroTotal.BackColor = System.Drawing.Color.White;
-            this.lblEuroTotal.Cursor = System.Windows.Forms.Cursors.Help;
-            this.lblEuroTotal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEuroTotal.Location = new System.Drawing.Point(341, 176);
-            this.lblEuroTotal.Name = "lblEuroTotal";
-            this.lblEuroTotal.Size = new System.Drawing.Size(17, 19);
-            this.lblEuroTotal.TabIndex = 25;
-            this.lblEuroTotal.Text = "€";
+            this.dtpFechaFactura.CalendarFont = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaFactura.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaFactura.Location = new System.Drawing.Point(182, 85);
+            this.dtpFechaFactura.Name = "dtpFechaFactura";
+            this.dtpFechaFactura.Size = new System.Drawing.Size(176, 22);
+            this.dtpFechaFactura.TabIndex = 17;
             // 
-            // lblEuroSubTotal
+            // nudIdFactura
             // 
-            this.lblEuroSubTotal.AutoSize = true;
-            this.lblEuroSubTotal.BackColor = System.Drawing.Color.White;
-            this.lblEuroSubTotal.Cursor = System.Windows.Forms.Cursors.Help;
-            this.lblEuroSubTotal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEuroSubTotal.Location = new System.Drawing.Point(341, 131);
-            this.lblEuroSubTotal.Name = "lblEuroSubTotal";
-            this.lblEuroSubTotal.Size = new System.Drawing.Size(17, 19);
-            this.lblEuroSubTotal.TabIndex = 26;
-            this.lblEuroSubTotal.Text = "€";
+            this.nudIdFactura.Enabled = false;
+            this.nudIdFactura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudIdFactura.Location = new System.Drawing.Point(194, 39);
+            this.nudIdFactura.Name = "nudIdFactura";
+            this.nudIdFactura.Size = new System.Drawing.Size(120, 26);
+            this.nudIdFactura.TabIndex = 13;
+            this.nudIdFactura.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCliente.Location = new System.Drawing.Point(6, 214);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(85, 24);
+            this.lblCliente.TabIndex = 4;
+            this.lblCliente.Text = "Cliente: ";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(6, 172);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(67, 24);
+            this.lblTotal.TabIndex = 3;
+            this.lblTotal.Text = "Total: ";
+            // 
+            // lblSubtotal
+            // 
+            this.lblSubtotal.AutoSize = true;
+            this.lblSubtotal.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtotal.Location = new System.Drawing.Point(6, 127);
+            this.lblSubtotal.Name = "lblSubtotal";
+            this.lblSubtotal.Size = new System.Drawing.Size(97, 24);
+            this.lblSubtotal.TabIndex = 2;
+            this.lblSubtotal.Text = "Subtotal: ";
+            // 
+            // lblFechaFactura
+            // 
+            this.lblFechaFactura.AutoSize = true;
+            this.lblFechaFactura.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaFactura.Location = new System.Drawing.Point(6, 81);
+            this.lblFechaFactura.Name = "lblFechaFactura";
+            this.lblFechaFactura.Size = new System.Drawing.Size(155, 24);
+            this.lblFechaFactura.TabIndex = 1;
+            this.lblFechaFactura.Text = "Fecha Factura: ";
+            // 
+            // lblIdFactura
+            // 
+            this.lblIdFactura.AutoSize = true;
+            this.lblIdFactura.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdFactura.Location = new System.Drawing.Point(6, 38);
+            this.lblIdFactura.Name = "lblIdFactura";
+            this.lblIdFactura.Size = new System.Drawing.Size(117, 24);
+            this.lblIdFactura.TabIndex = 0;
+            this.lblIdFactura.Text = "Id Factura: ";
             // 
             // btnBorrarFactura
             // 
@@ -298,12 +304,7 @@
             this.btnGenerarAlbaran.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGenerarAlbaran.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGenerarAlbaran.UseVisualStyleBackColor = true;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "factura.png");
+            this.btnGenerarAlbaran.Click += new System.EventHandler(this.btnGenerarAlbaran_Click);
             // 
             // ConsultaFactura
             // 

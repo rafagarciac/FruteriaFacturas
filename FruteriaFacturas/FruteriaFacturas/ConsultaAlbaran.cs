@@ -34,7 +34,7 @@ namespace FruteriaFacturas
             cargarAlbaranesLV();
 
             // EL CONTROL DEL IDALBARAN NO PUEDE SER MAYOR QUE LOS ALBARANES QUE HAY EN EL ARRAYLIST
-            this.nudIdFactura.Maximum = facturasArray.Count;
+            this.nudIdFactura.Maximum = conexion.ultimaFactura();
         }
 
     // METODO QUE RESPONDE AL EVENTO DE SELECCIONAR ALBARAN EN EL LISVIEW
@@ -57,7 +57,6 @@ namespace FruteriaFacturas
                         this.txtSubtotal.Text = al.getSubtotal().ToString();
                         this.txtTotal.Text = al.getTotal().ToString();
                         this.nudIdFactura.Value = al.getIdFactura();
-
                     }
                 }
             }
@@ -225,7 +224,7 @@ namespace FruteriaFacturas
             if (lvListadoAlbaran.SelectedItems.Count > 0)
             {
                 ListViewItem listItem = lvListadoAlbaran.SelectedItems[0];
-                VistaReporte vista = new VistaReporte(null, listItem.SubItems[0].Text);
+                VistaReporte vista = new VistaReporte(null, listItem.SubItems[0].Text, "");
                 vista.Show();
             }else
                 MessageBox.Show("Selecciona un Albaran en el Listado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

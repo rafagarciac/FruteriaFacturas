@@ -179,5 +179,17 @@ namespace FruteriaFacturas
                 MessageBox.Show("Selecciona una Factura en el Listado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        private void btnGenerarAlbaran_Click(object sender, EventArgs e)
+        {
+            if (lvFacturas.SelectedItems.Count > 0)
+            {
+                ListViewItem listItem = lvFacturas.SelectedItems[0];
+                VistaReporte vista = new VistaReporte(null, "", listItem.SubItems[0].Text);
+                vista.Show();
+            }
+            else
+                MessageBox.Show("Selecciona una Factura en el Listado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
     }
 }
