@@ -52,10 +52,10 @@
             this.btnModificarAlbaran = new System.Windows.Forms.Button();
             this.btnBorrarAlbaran = new System.Windows.Forms.Button();
             this.btnModificarLineas = new System.Windows.Forms.Button();
-            this.btnGenerarAlbaran = new System.Windows.Forms.Button();
             this.lblEuroSubtotal = new System.Windows.Forms.Label();
             this.lblEuroTotal = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnGenerarAlbaran = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdAlbaran)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudIdFactura)).BeginInit();
             this.SuspendLayout();
@@ -281,22 +281,6 @@
             this.btnModificarLineas.UseVisualStyleBackColor = true;
             this.btnModificarLineas.Click += new System.EventHandler(this.botonesForm);
             // 
-            // btnGenerarAlbaran
-            // 
-            this.btnGenerarAlbaran.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGenerarAlbaran.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGenerarAlbaran.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarAlbaran.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarAlbaran.Image")));
-            this.btnGenerarAlbaran.Location = new System.Drawing.Point(189, 381);
-            this.btnGenerarAlbaran.Name = "btnGenerarAlbaran";
-            this.btnGenerarAlbaran.Size = new System.Drawing.Size(170, 58);
-            this.btnGenerarAlbaran.TabIndex = 22;
-            this.btnGenerarAlbaran.Text = "GENERAR PDF";
-            this.btnGenerarAlbaran.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarAlbaran.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGenerarAlbaran.UseVisualStyleBackColor = true;
-            this.btnGenerarAlbaran.Click += new System.EventHandler(this.btnGenerarAlbaran_Click);
-            // 
             // lblEuroSubtotal
             // 
             this.lblEuroSubtotal.AutoSize = true;
@@ -334,6 +318,22 @@
             this.btnActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // btnGenerarAlbaran
+            // 
+            this.btnGenerarAlbaran.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGenerarAlbaran.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGenerarAlbaran.Font = new System.Drawing.Font("Georgia", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarAlbaran.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarAlbaran.Image")));
+            this.btnGenerarAlbaran.Location = new System.Drawing.Point(189, 381);
+            this.btnGenerarAlbaran.Name = "btnGenerarAlbaran";
+            this.btnGenerarAlbaran.Size = new System.Drawing.Size(170, 58);
+            this.btnGenerarAlbaran.TabIndex = 22;
+            this.btnGenerarAlbaran.Text = "GENERAR PDF";
+            this.btnGenerarAlbaran.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerarAlbaran.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGenerarAlbaran.UseVisualStyleBackColor = true;
+            this.btnGenerarAlbaran.Click += new System.EventHandler(this.btnGenerarAlbaran_Click);
             // 
             // ConsultaAlbaran
             // 
@@ -395,9 +395,9 @@
         private System.Windows.Forms.Button btnModificarAlbaran;
         private System.Windows.Forms.Button btnBorrarAlbaran;
         private System.Windows.Forms.Button btnModificarLineas;
-        private System.Windows.Forms.Button btnGenerarAlbaran;
         private System.Windows.Forms.Label lblEuroSubtotal;
         private System.Windows.Forms.Label lblEuroTotal;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Button btnGenerarAlbaran;
     }
 }

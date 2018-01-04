@@ -95,7 +95,7 @@ namespace FruteriaFacturas
             }
         }
 
-        //METODO MODIFICAR SUBTOTAL Y TOTAL DE ALBARAN
+    //METODO MODIFICAR SUBTOTAL Y TOTAL DE ALBARAN
         internal void modificarImporteAlbaran(string subtotal, string total, string idAlbaran)
         {
             try
@@ -106,6 +106,20 @@ namespace FruteriaFacturas
             catch (Exception e)
             {
                 MessageBox.Show("Error al Modificar el Albaran: " + idAlbaran + " " + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+    // METODO MODIFICAR FACTURA
+        public void modificarFactura(string idFactura, DateTime fechaFactura, string subtotal, string total, string dni_cifFactura)
+        {
+            try
+            {
+                cmd = new SqlCommand("UPDATE Facturas SET fechaFactura = '" + fechaFactura.ToShortDateString() + "', subtotal = " + subtotal + ", total = " + total + ", dni_cif = '" + dni_cifFactura + "' WHERE idFactura = " + idFactura, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Modificar la Factura: " + idFactura + " " + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -137,7 +151,7 @@ namespace FruteriaFacturas
             }
         }
 
-        // METODO BORRAR LINEA DEL ALBARAN X
+    // METODO BORRAR LINEA DEL ALBARAN X
         internal void borrarLinea(string producto, string idAlbaran)
         {
             try
@@ -148,6 +162,21 @@ namespace FruteriaFacturas
             catch (Exception e)
             {
                 MessageBox.Show("Error al Borrar la linea: " + producto + "en Albaran " + idAlbaran + " " + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+   // METODO QUE BORRA UNA FACTURA
+        public void borrarFactura(string idFactura)
+        {
+            try
+            {
+                cmd = new SqlCommand("DELETE FROM Facturas WHERE idFactura = " + idFactura, conn);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error al Borrar la Factura " + idFactura + " " + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -414,7 +443,5 @@ namespace FruteriaFacturas
                 MessageBox.Show("Error al Modificar el Albaran: " + idAlbaran, "Aviso" , MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        
     }
 }

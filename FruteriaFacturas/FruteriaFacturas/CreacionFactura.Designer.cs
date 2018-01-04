@@ -56,6 +56,8 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnQuitarTodos = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblListadoAlbaranes
@@ -78,7 +80,7 @@
             this.chTotal});
             this.lvAlbaranesFacturas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lvAlbaranesFacturas.LargeImageList = this.imageList1;
-            this.lvAlbaranesFacturas.Location = new System.Drawing.Point(21, 150);
+            this.lvAlbaranesFacturas.Location = new System.Drawing.Point(6, 26);
             this.lvAlbaranesFacturas.Name = "lvAlbaranesFacturas";
             this.lvAlbaranesFacturas.Size = new System.Drawing.Size(522, 294);
             this.lvAlbaranesFacturas.SmallImageList = this.imageList1;
@@ -252,7 +254,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 131);
+            this.label1.Location = new System.Drawing.Point(6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 16);
             this.label1.TabIndex = 25;
@@ -302,14 +304,25 @@
             this.btnQuitarTodos.UseVisualStyleBackColor = true;
             this.btnQuitarTodos.Click += new System.EventHandler(this.btnAnnadir_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lvAlbaranesFacturas);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(21, 123);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(546, 328);
+            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
             // CreacionFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 482);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnQuitarTodos);
             this.Controls.Add(this.lvAlbaranesSeleccionados);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.cbElegirClientes);
             this.Controls.Add(this.lblCliente);
             this.Controls.Add(this.txtTotal);
@@ -322,10 +335,11 @@
             this.Controls.Add(this.btnAnnadir);
             this.Controls.Add(this.lblNumeroFactura);
             this.Controls.Add(this.lblFacturaN);
-            this.Controls.Add(this.lvAlbaranesFacturas);
             this.Controls.Add(this.lblListadoAlbaranes);
             this.Name = "CreacionFactura";
             this.Text = "CreacionFactura";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,5 +373,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button btnQuitarTodos;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FruteriaFacturas
 {
-    class Factura
+    public class Factura
     {
 
         /// <summary>
